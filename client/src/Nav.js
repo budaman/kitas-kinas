@@ -12,7 +12,7 @@ class Nav extends Component {
       return <div className="fixedNavMenu">
          <div className="kitasKinasText"> Kitas Kinas </div>
          <div
-            className="menu"
+            className="menu-nav"
              onClick={this.props.handleClick}
             >
          </div>

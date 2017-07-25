@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Nav from '../Nav';
+var Link = require('react-router-dom').Link;
 
 class Apzvalgos extends Component {
 
@@ -7,15 +8,12 @@ class Apzvalgos extends Component {
       propOk: false
    }
 
-
-
-   componentWillReceiveProps(prop) {
-     if(prop.blog !== '') {
-        this.setState({
-           propOk: true
-        })
-     }
+   componentDidMount() {
+      this.setState({
+         propOk: true
+      })
    }
+
 
 
    render(){
@@ -23,14 +21,27 @@ class Apzvalgos extends Component {
       if(this.state.propOk) {
       blogas = this.props.blog.map((bl, i) => {
           return (
-             <div>
+             <Link    key={bl._id}
+                      to={'apzvalgos/blog/' +i}
+                      >
+             <div
+                className="blogai"
+                >
+
             <h3>{bl.title}</h3>
+            <img
+               alt={bl.images.secure_url}
+               src={bl.images.secure_url}
+             />
              <p>{bl.blog}</p>
+             <div className="read-more">Read More <hr  className="hr"/></div>
             </div>
+            </Link>
+
           )
        })
       }
-      console.log(blogas)
+
 
 
       return (
@@ -38,7 +49,11 @@ class Apzvalgos extends Component {
             <Nav
                handleClick={this.props.handleClick}
              />
+
+             <div className="blogai-container">
              {this.state.propOk && blogas}
+             </div>
+
          </div>
       )
    }

@@ -6,6 +6,7 @@ import Apzvalgos from './components/Apzvalgos';
 import Straipsniai from './components/Straipsniai';
 import Apie from './components/Apie';
 import Admin from './components/Admin';
+import Blog from './components/Blog';
 
 var ReactRouter = require('react-router-dom');//isikvieciam Router
 var Router = ReactRouter.BrowserRouter;//routerio viduje galima sudelioti visus komponentus
@@ -33,12 +34,11 @@ class App extends Component {
       this.setState({
          navOn: !this.state.navOn
       })
-      console.log(this.state.blog.length)
   }
+
 
   render() {
     return (
-
       <Router>
          <div className="container">
          <FullNav
@@ -58,6 +58,7 @@ class App extends Component {
                <Route exact path="/straipsniai" render={()=><Straipsniai pages={this.state.pages} handleClick={this.handleClick} />}/>
                <Route exact path="/apie" render={()=><Apie pages={this.state.pages} handleClick={this.handleClick} />}/>
                <Route exact path="/admin" component={Admin} />
+               <Route path="/apzvalgos/blog" render={()=><Blog handleClick={this.handleClick}/>}/>
                <Route render={function(){
                   return <p>Tokio puslapio nėra.</p>
                }} />

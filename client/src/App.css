@@ -13,6 +13,7 @@ li {
 
 a{
    text-decoration: none;
+   color: black;
 }
 
 .localContainer {
@@ -34,15 +35,25 @@ a{
 }
 
 
-
 .menu {
    position: absolute;
    right: 5%;
-   top: 5%;
+   top: 6%;
    background-image: url('img/menu.png');
    background-size: cover;
    height: 45px;
    width: 45px;
+   cursor: pointer;
+}
+
+.menu-nav {
+   position: absolute;
+   right: 5%;
+   top: 26%;
+   background-image: url('img/menu.png');
+   background-size: cover;
+   height: 40px;
+   width: 40px;
    cursor: pointer;
 }
 
@@ -118,13 +129,15 @@ a{
 }
 /* FIXED NAV MENU */
 .fixedNavMenu {
+   position: fixed;
+   top: 0;
    display: flex;
    justify-content: center;
    align-items: center;
-   height: 100px;
+   height: 80px;
    width: 100vw;
    background-color: #252423;
-   z-index: 200;
+   z-index: 1;
 }
 
 .kitasKinasText {
@@ -140,3 +153,77 @@ a{
    height: 100vh;
    background-color: white;
 }
+
+
+/* APZVALGOS */
+
+.blogai-container {
+   margin-top: 100px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
+}
+
+
+.blogai {
+   width: 60vw;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
+   margin-top: 20px;
+   cursor: pointer;
+   filter: grayscale(0);
+   transition: 0.6s all ease-in-out;
+}
+
+.blogai p {
+   width: 60vw;
+   overflow: hidden;
+   height: 150px;
+   background: -webkit-linear-gradient(#000000, #eee);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.blogai h3 {
+   width: 60vw;
+   display: flex;
+   justify-content: center;
+}
+
+.blogai img {
+   width: 60vw;
+   height: 25vw;
+}
+
+.read-more {
+   margin: 0;
+   transform: translateY(-50%);
+}
+
+.hr {
+   width: 0px;
+   transition: 0.5s all ease-in-out;
+   background-color: #252423;
+   border: none;
+   height: 3px;
+}
+
+.blogai:hover {
+   opacity: 0.9;
+}
+
+.blogai:hover .hr {
+   width: 85px;
+   opacity: 1;
+}
+
+.blogai:hover {
+   filter: grayscale(100%)
+}
+
+
+
+/*APZVALOGS ENDS*/
