@@ -6,12 +6,11 @@ import Apzvalgos from './components/Apzvalgos';
 import Straipsniai from './components/Straipsniai';
 import Apie from './components/Apie';
 import Admin from './components/Admin';
-import Blog from './components/Blog';
+import Nav from './Nav'
+import ProductPage from './ProductPage'
+import Blog from './components/Blog'
 
-var ReactRouter = require('react-router-dom');//isikvieciam Router
-var Router = ReactRouter.BrowserRouter;//routerio viduje galima sudelioti visus komponentus
-var Route = ReactRouter.Route;
-var Switch = ReactRouter.Switch;
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
 class App extends Component {
 
@@ -46,28 +45,44 @@ class App extends Component {
             pages={this.state.pages}
             handleClick={this.handleClick}
          />
-         {/*<Nav
+         <Nav
             handleClick={this.handleClick}
-          /> */}
+          />
             <Switch>
                <Route exact path="/" render={()=><Local handleClick={this.handleClick}/>}/>
-               <Route exact path="/apzvalgos" render={()=>
+               <Route exact path="/apzvalgos" render={(props)=>
                   <Apzvalgos pages={this.state.pages}
+                     match={this.state.match}
                      blog={this.state.blog}
-                     handleClick={this.handleClick} />}/>
+                     handleClick={this.handleClick} {...props}  />}/>
+               <Route path="/apzvalgos/blog" render={(props)=>
+                  <Blog pages={this.state.pages}
+                     match={this.state.match}
+                     blog={this.state.blog}
+                     handleClick={this.handleClick} {...props}  />}/> />
                <Route exact path="/straipsniai" render={()=><Straipsniai pages={this.state.pages} handleClick={this.handleClick} />}/>
                <Route exact path="/apie" render={()=><Apie pages={this.state.pages} handleClick={this.handleClick} />}/>
                <Route exact path="/admin" component={Admin} />
-               <Route path="/apzvalgos/blog" render={()=><Blog handleClick={this.handleClick}/>}/>
+               <Route exact path="/products" render={MyProductPage} />
                <Route render={function(){
                   return <p>Tokio puslapio nėra.</p>
                }} />
             </Switch>
             </div>
       </Router>
-
     );
   }
 }
+
+
+
+const MyProductPage = (props) => {
+      return (
+        <ProductPage
+          hahaha="hahaaa"
+          {...props}
+        />
+      );
+    }
 
 export default App;

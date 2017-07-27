@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-var NavLink = require('react-router-dom').NavLink;
+var Link = require('react-router-dom').Link;
 var latinize = require('latinize');
 latinize('ĄČĖĘĮŲŽŪŠ ąčėęįųžūš');
 
@@ -14,13 +14,12 @@ class FullNav extends Component {
                className="pages"
                onClick={this.props.handleClick}
                >
-                  <NavLink exact activeClassName='active' to={'/'+latinezed}>
+                  <Link to={'/'+latinezed}>
                   {page.toUpperCase()}
-               </NavLink>
+                  </Link>
                </li>
          )
       })
-
 
       return (
          <nav className={'navMenu ' + (this.props.navOn ? "navMenuOn" : "navMenuOff")}>
