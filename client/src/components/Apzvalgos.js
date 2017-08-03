@@ -6,14 +6,13 @@ import { BrowserRouter as Router, Link, Route } from 'react-router-dom'
 class Apzvalgos extends Component {
    render(){
       var match = this.props.match;
-      console.log(match)
 
    let blogas;
       blogas = this.props.blog.map((bl, i) => {
           return (
              <Link    key={bl._id}
                       to={{
-                        pathname: match.url + '/blog/' + i,
+                        pathname: match.url + '/blog' ,
                         search: '?index=' +i
                      }} >
             <div className="blogai">

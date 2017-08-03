@@ -47,16 +47,7 @@ a{
    cursor: pointer;
 }
 
-.menu-nav {
-   position: absolute;
-   right: 5%;
-   top: 26%;
-   background-image: url('img/menu.png');
-   background-size: cover;
-   height: 40px;
-   width: 40px;
-   cursor: pointer;
-}
+
 
 .navMenu {
    display: none;
@@ -140,6 +131,28 @@ a{
    width: 100vw;
    background-color: #252423;
    z-index: 1;
+}
+
+.menu-nav {
+   position: absolute;
+   right: 5%;
+   top: 26%;
+   background-image: url('img/menu.png');
+   background-size: cover;
+   height: 40px;
+   width: 40px;
+   cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  .menu-nav {
+    position: static;
+  }
+
+   .fixedNavMenu {
+      justify-content: space-around;
+   }
+
 }
 
 .kitasKinasText {
@@ -258,3 +271,40 @@ padding: 7px;
 opacity: 0.7;
 }
 /*APZVALOGS ENDS*/
+
+/*ADMIN*/
+
+.uploadForm {
+   width: 100vw;
+   display: flex;
+   justify-content: center;
+   margin-top: 80px;
+   background-image: linear-gradient(-20deg, #6e45e2 0%, #88d3ce 100%);
+}
+
+.image-upload {
+   border: 2px dashed black;
+   height: 100px;
+   width: 100px;
+}
+
+.form {
+   margin-top: 30px;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   width: 40vw;
+}
+
+
+.blog-text-field {
+   height: 300px;
+   width: 300px;
+}
+
+.form input {
+   margin: 7px;
+}
+
+/*ADMIN ENDS*/

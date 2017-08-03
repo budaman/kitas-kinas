@@ -7,7 +7,6 @@ import Straipsniai from './components/Straipsniai';
 import Apie from './components/Apie';
 import Admin from './components/Admin';
 import Nav from './Nav'
-import ProductPage from './ProductPage'
 import Blog from './components/Blog'
 
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
@@ -63,7 +62,6 @@ class App extends Component {
                <Route exact path="/straipsniai" render={()=><Straipsniai pages={this.state.pages} handleClick={this.handleClick} />}/>
                <Route exact path="/apie" render={()=><Apie pages={this.state.pages} handleClick={this.handleClick} />}/>
                <Route exact path="/admin" component={Admin} />
-               <Route exact path="/products" render={MyProductPage} />
                <Route render={function(){
                   return <p>Tokio puslapio nėra.</p>
                }} />
@@ -73,16 +71,5 @@ class App extends Component {
     );
   }
 }
-
-
-
-const MyProductPage = (props) => {
-      return (
-        <ProductPage
-          hahaha="hahaaa"
-          {...props}
-        />
-      );
-    }
 
 export default App;

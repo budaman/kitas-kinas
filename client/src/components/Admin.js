@@ -14,7 +14,7 @@ class Admin extends Component {
  }
 
    handlePost = () =>{
-      if (this.state.blog !== '' && this.state.blog !==''  && this.state.images.length !== ''){
+      if (this.state.blog !== '' && this.state.images ==='uploaded'  && this.state.images.length !== ''){
        fetch('blog', {
            method: 'post',
           headers: {'Content-Type': 'application/json'},
@@ -23,7 +23,8 @@ class Admin extends Component {
              blog: this.state.blog,
              images: this.state.images
            })
-       });
+       })
+       alert('Irasas issaugotas Apzvalgos kategorijoje')
     } else alert('ne viskas uzpildyta')
    }
 
@@ -70,12 +71,11 @@ class Admin extends Component {
             alert(err)
             return
          }
-         console.log('UPLOAD Complete: ' +JSON.stringify(resp.body))
-
-         const uploaded = resp.body
+         alert('UPLOAD Complete: ')
+         // console.log(JSON.stringify(resp.body))
 
          this.setState({
-            images: uploaded
+            images: 'uploaded'
          })
 
       })
@@ -84,8 +84,13 @@ class Admin extends Component {
 
   render() {
     return (
-      <div>
-         <Dropzone onDrop={this.uploadFile}  />
+      <div className="uploadForm">
+         <div className="form">
+         <Dropzone
+            className="image-upload"
+            onDrop={this.uploadFile}
+          />
+         <p>Upload Blog cover picture</p>
          <input
             type="text"
             placeholder="title"
@@ -93,12 +98,14 @@ class Admin extends Component {
             id="title"
           />
           <input
+             className="blog-text-field"
              type="text"
              placeholder="blog"
              onBlur={this.handleInput}
              id="blog"
            />
          <button onClick={this.handlePost}> Send </button>
+         </div>
       </div>
     );
   }

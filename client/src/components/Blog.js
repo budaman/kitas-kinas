@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
-// import { BrowserRouter as withRouter } from 'react-router-dom'
 var queryString = require('query-string');
+var Link = require('react-router-dom').Link;
+
 
 class Blog extends Component {
 
@@ -12,7 +13,6 @@ class Blog extends Component {
    componentDidMount () {
 
          var page = queryString.parse(this.props.location.search);
-         console.log(page)
          this.setState({
             pageIndex: page.index
          })
@@ -32,8 +32,6 @@ class Blog extends Component {
    }
 
    render(){
-      console.log(this.state.pageIndex)
-
       let propUpd = this.state.receivedProp
       let i = this.state.pageIndex;
       let blog = this.props.blog;
@@ -56,12 +54,16 @@ class Blog extends Component {
                    <div className="blogas">
                       <h3>{blog[i].title}</h3>
                       <img
+                        alt={blog[i].images.secure_url}
                         className="blogCoverImg"
                         src={blog[i].images.secure_url}
                      />
                      <p>{blog[i].blog}</p>
                      <div className="griztiCont">
-                     <div className="grizti">Grįžti</div>
+
+                     <Link to={'/apzvalgos'}>
+                        <div className="grizti">Grįžti</div>
+                     </Link>
                   </div>
                 </div>
                 }
