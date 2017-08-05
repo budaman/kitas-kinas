@@ -10,11 +10,12 @@ class Admin extends Component {
    state = {
    title: '',
    blog: '',
-   images: ''
+   images: '',
+   isFilled: ''
  }
 
    handlePost = () =>{
-      if (this.state.blog !== '' && this.state.images ==='uploaded'  && this.state.images.length !== ''){
+      if (this.state.blog !== '' && this.state.isFilled ==='uploaded'  && this.state.images.length !== ''){
        fetch('blog', {
            method: 'post',
           headers: {'Content-Type': 'application/json'},
@@ -42,44 +43,47 @@ class Admin extends Component {
    }
 
    uploadFile = (files) => {
-      const image = files[0]
-      const cloudName = 'dit1kqs0w'
-      const url = 'https://api.cloudinary.com/v1_1/'
-      +cloudName+'/image/upload'
+       const image = files[0]
+       const cloudName = 'dit1kqs0w'
+       const url = 'https://api.cloudinary.com/v1_1/'
+       +cloudName+'/image/upload'
 
-      const timestamp = Date.now()/1000
-      const uploadPreset = 'cutirzsa'
-      const paramsStr = 'timestamp='+timestamp
-      +'&upload_preset='+uploadPreset+'dGGYCL2SPry_djUnfH2TOIVXWt4'
+       const timestamp = Date.now()/1000
+       const uploadPreset = 'cutirzsa'
+       const paramsStr = 'timestamp='+timestamp
+       +'&upload_preset='+uploadPreset+'dGGYCL2SPry_djUnfH2TOIVXWt4'
 
-      const signature = sha1(paramsStr)
-      const params = {
-         'api_key': '671587567346319',
-         'timestamp': timestamp,
-         'upload_preset': uploadPreset,
-         'signature': signature
-      }
-      let uploadRequest = superagent.post(url)
-      uploadRequest.attach('file', image)
+       const signature = sha1(paramsStr)
+       const params = {
+          'api_key': '671587567346319',
+          'timestamp': timestamp,
+          'upload_preset': uploadPreset,
+          'signature': signature
+       }
+       let uploadRequest = superagent.post(url)
+       uploadRequest.attach('file', image)
 
-      Object.keys(params).forEach((key) => {
-         uploadRequest.field(key, params[key])
-      })
+       Object.keys(params).forEach((key) => {
+          uploadRequest.field(key, params[key])
+       })
 
-      uploadRequest.end((err,resp) => {
+       uploadRequest.end((err,resp) => {
          if (err) {
-            alert(err)
-            return
-         }
-         alert('UPLOAD Complete: ')
-         // console.log(JSON.stringify(resp.body))
+             alert(err)
+             return
+          }
+          console.log('UPLOAD Complete: ' +JSON.stringify(resp.body))
+          alert('UPLOAD Complete: ')
 
-         this.setState({
-            images: 'uploaded'
-         })
+          const uploaded = resp.body
 
-      })
-   }
+          this.setState({
+             images: uploaded,
+              isFilled: 'uploaded'
+          })
+
+       })
+    }
 
 
   render() {

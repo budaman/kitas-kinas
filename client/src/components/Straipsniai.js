@@ -9,7 +9,7 @@ class Straipsniai extends Component {
 
       return (
          <div className="straipsniai-container">
-            <div>{this.props.pages[1]} </div>
+            <div>{this.props.pages[1]} upcoming soon...</div>
          </div>
       )
    }
